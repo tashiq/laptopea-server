@@ -14,6 +14,8 @@ async function server() {
         await client.connect();
         const database = client.db('assignment12');
         const productsCollection = database.collection('products');
+        const reviewCollection = database.collection('reviews');
+        const orderCollection = database.collection('orders');
         app.get('/products', async (req, res) => {
             const cursor = productsCollection.find({});
             const result = await cursor.toArray();
@@ -27,6 +29,22 @@ async function server() {
             }
             const result = await productsCollection.findOne(query);
             res.json(result);
+        })
+        app.post('/reviews', async (req, res) => {
+            const data = req.body;
+            const result = await reviewCollection.insertOne(data);
+            res.json(result)
+        })
+        app.get('/reviews', async (req, res) => {
+            const cursor = reviewCollection.find({});
+            const result = await cursor.toArray();
+            res.json(result)
+        })
+        app.post('/orders', async (req, res) => {
+            const data = req.body;
+            const result = await orderCollection.insertOne(data);
+            console.log(result);
+            res.json(result)
         })
     }
     finally {
