@@ -5,6 +5,7 @@ Laptopea
 
 >Description: We provide the best laptop in Bangladesh. And our services is available all over the country. Our laptops are cheapest among the sellers.
 
+>USED MATERIALS: Express, MongoDB, JavaSript, NodeJS
 
 >feature: 
 1. It is a SPA page. 
